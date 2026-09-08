@@ -1,13 +1,13 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Democratizing German Energy Regulation
+  pageTitle: Democratising German Energy Regulation
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: siddhi-s-kulkarni.github.io/Democratising-German-Energy-Regulation
+  baseUrl: quartz.jzhao.xyz
   ignorePatterns:
     - private
     - templates

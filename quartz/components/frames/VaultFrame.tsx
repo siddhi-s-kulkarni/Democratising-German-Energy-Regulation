@@ -52,7 +52,7 @@ export const VaultFrame: PageFrame = {
               ))}
             </div>
           </div>
-          <h1 class="vault-page-title">Democratizing German Energy Regulation</h1>
+          <h1 class="vault-page-title">Democratising German Energy Regulation</h1>
           <div class="vault-graph-stage">
             {right.map((BodyComponent) => (
               <BodyComponent {...componentData} />
