@@ -159,6 +159,11 @@ a {
   }
 }
 
+.search input::placeholder {
+  color: var(--darkgray);
+  opacity: 0.65;
+}
+
 .page {
   max-width: calc(#{map.get($breakpoints, desktop)} + 300px);
   margin: 0 auto;
@@ -348,6 +353,27 @@ a {
     max-width: 100%;
     min-width: 100%;
     margin: 0;
+  }
+}
+
+// Vault frame: full-width like the frame above, but with a right-side
+// overlay panel (Explorer) that isn't part of the grid at all — it's a
+// fixed-position element that slides in on top of the content.
+.page[data-frame="vault"] > #quartz-body {
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "grid-header"
+    "grid-center"
+    "grid-footer";
+
+  @media all and ($tablet) {
+    grid-template-columns: auto;
+  }
+
+  & .center.vault-center {
+    max-width: 100%;
+    min-width: 100%;
   }
 }
 

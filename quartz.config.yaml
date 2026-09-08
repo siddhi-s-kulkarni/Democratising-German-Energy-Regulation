@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: Democratizing German Energy Regulation
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -16,30 +16,30 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Schibsted Grotesk
-      body: Source Sans Pro
+      header: Fraunces
+      body: Quicksand
       code: IBM Plex Mono
     colors:
       lightMode:
-        light: "#faf8f8"
-        lightgray: "#e5e5e5"
-        gray: "#b8b8b8"
-        darkgray: "#4e4e4e"
-        dark: "#2b2b2b"
-        secondary: "#284b63"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#fff23688"
+        light: "#f6f8fa"
+        lightgray: "#e3e8ee"
+        gray: "#98a2b3"
+        darkgray: "#3d4451"
+        dark: "#181b21"
+        secondary: "#0891b2"
+        tertiary: "#6366f1"
+        highlight: rgba(8, 145, 178, 0.1)
+        textHighlight: "#ffd88a99"
       darkMode:
-        light: "#161618"
-        lightgray: "#393639"
-        gray: "#646464"
-        darkgray: "#d4d4d4"
-        dark: "#ebebec"
-        secondary: "#7b97aa"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#b3aa0288"
+        light: "#12151b"
+        lightgray: "#262b35"
+        gray: "#6b7383"
+        darkgray: "#ccd2dd"
+        dark: "#f1f4f9"
+        secondary: "#2dd4bf"
+        tertiary: "#818cf8"
+        highlight: rgba(45, 212, 191, 0.12)
+        textHighlight: "#e0a94666"
 plugins:
   - source: github:quartz-community/created-modified-date
     enabled: true
@@ -58,7 +58,7 @@ plugins:
         dark: github-dark
       keepBackground: false
     order: 20
-  - source: github:quartz-community/obsidian-flavored-markdown
+  - source: ./local-plugins/obsidian-flavored-markdown-custom
     enabled: true
     options:
       enableInHtmlEmbed: false
@@ -99,7 +99,7 @@ plugins:
     enabled: false
     order: 92
   - source: github:quartz-community/fonts
-    enabled: true
+    enabled: false
   - source: github:quartz-community/remove-draft
     enabled: true
   - source: github:quartz-community/explicit-publish
@@ -121,18 +121,18 @@ plugins:
     enabled: true
   - source: github:quartz-community/content-page
     enabled: true
-  - source: github:quartz-community/folder-page
+  - source: ./local-plugins/folder-page-custom
     enabled: true
   - source: github:quartz-community/tag-page
-    enabled: true
-  - source: github:quartz-community/explorer
+    enabled: false
+  - source: ./local-plugins/explorer-custom
     enabled: true
     options:
       folderDefaultState: collapsed
-    #layout:
-     # position: left
-      #priority: 50
-  - source: github:quartz-community/graph
+    layout:
+      position: left
+      priority: 50
+  - source: ./local-plugins/graph-custom
     enabled: true
     options:
       globalGraph:
@@ -141,10 +141,23 @@ plugins:
         repelForce: 0.8     # spread nodes out more — more "web-like"
         enableRadial: true  # already default, keeps it circular/organic
         focusOnHover: true
-    #layout:
-     # position: right
-      #priority: 10
-  - source: github:quartz-community/search
+        showTags: false     # hide tag nodes (e.g. inline #hashtags) — just the notes themselves
+        opacityScale: 6      # labels readable without needing to hover/zoom first
+    layout:
+      position: right
+      priority: 10
+  - source: ./local-plugins/vault-page
+    enabled: true
+    order: 45
+  - source: ./local-plugins/robots-txt
+    enabled: true
+    order: 900
+  - source: ./local-plugins/nav-tabs
+    enabled: true
+    layout:
+      position: afterBody
+      priority: 1
+  - source: ./local-plugins/search-custom
     enabled: true
     layout:
       position: left
@@ -207,8 +220,9 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
+        LinkedIn: https://www.linkedin.com/in/siddhikulkarni/
+        GitHub: https://github.com/siddhi-s-kulkarni
+        License: https://creativecommons.org/licenses/by-nc-nd/4.0/
   - source: github:quartz-community/recent-notes
     enabled: false
   - source: github:quartz-community/spacer
@@ -274,16 +288,32 @@ layout:
         beforeBody: []
         left: []
         right: []
-    content: {}
+    content:
+      exclude:
+        - nav-tabs
     folder:
       exclude:
         - reader-mode
+        - nav-tabs
       positions:
         right: []
     tag:
       exclude:
         - reader-mode
+        - nav-tabs
       positions:
         right: []
     canvas: {}
     bases: {}
+    vault:
+      exclude:
+        - article-title
+        - content-meta
+        - note-properties
+        - breadcrumbs
+        - table-of-contents
+        - backlinks
+        - reader-mode
+        - page-title
+        - spacer
+      template: vault

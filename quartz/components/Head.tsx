@@ -5,6 +5,25 @@ import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { unescapeHTML } from "../util/escape"
 import { CustomOgImagesEmitterName } from "../../.quartz/plugins"
+import { createHash } from "crypto"
+import { readFileSync } from "fs"
+import path_ from "path"
+
+// Computed once per build, from the actual icon file's bytes — this
+// changes automatically whenever the icon image changes, so browsers
+// (Edge/Chrome in particular cache favicons very aggressively, often
+// ignoring a normal hard refresh) are forced to fetch the new one
+// instead of serving a stale cached copy indefinitely.
+function computeIconVersion(): string {
+  try {
+    const iconFile = path_.join(process.cwd(), "quartz", "static", "icon.png")
+    const bytes = readFileSync(iconFile)
+    return createHash("md5").update(bytes).digest("hex").slice(0, 8)
+  } catch {
+    return "0"
+  }
+}
+const ICON_VERSION = computeIconVersion()
 export default (() => {
   const Head: QuartzComponent = ({
     cfg,
@@ -25,7 +44,7 @@ export default (() => {
     const url = new URL(`https://${cfg.baseUrl ?? "example.com"}`)
     const path = url.pathname as FullSlug
     const baseDir = fileData.slug === "404" ? path : pathToRoot(fileData.slug!)
-    const iconPath = joinSegments(baseDir, "static/icon.png")
+    const iconPath = joinSegments(baseDir, "static/icon.png") + `?v=${ICON_VERSION}`
 
     // Url of current page
     const socialUrl =

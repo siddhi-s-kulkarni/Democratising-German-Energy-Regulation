@@ -1,0 +1,20 @@
+{
+  "name": "vault-page",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "quartz": {
+    "name": "vault-page",
+    "displayName": "Vault Page",
+    "category": "pageType",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultOrder": 45,
+    "defaultEnabled": true,
+    "defaultOptions": {}
+  }
+}

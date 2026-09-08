@@ -459,7 +459,24 @@ export async function installPlugin(
       console.log(styleText("cyan", `→`), `Linking ${spec.name} from ${spec.repo}...`)
     }
 
-    fs.symlinkSync(spec.repo, pluginDir, "dir")
+    try {
+      fs.symlinkSync(spec.repo, pluginDir, "dir")
+    } catch (error) {
+      // Windows blocks symlink creation without Developer Mode or admin
+      // rights (EPERM). Fall back to a plain recursive copy of the local
+      // plugin folder instead — works everywhere, just means edits to the
+      // local plugin source require re-running `plugin install` to pick up.
+      const isEperm = error instanceof Error && (error as NodeJS.ErrnoException).code === "EPERM"
+      if (!isEperm) throw error
+
+      if (options.verbose) {
+        console.log(
+          styleText("yellow", `⚠`),
+          `Symlink not permitted, copying ${spec.name} instead...`,
+        )
+      }
+      fs.cpSync(spec.repo, pluginDir, { recursive: true })
+    }
 
     if (options.verbose) {
       console.log(styleText("green", `✓`), `Linked ${spec.name}`)
