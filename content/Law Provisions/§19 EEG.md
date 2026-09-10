@@ -51,7 +51,7 @@ On the 5th August 2026, it was announced that the concrete details will release 
 After final publication, there will be a transitionary period for affected installations.
 
 ### EEG_Netzanschlusspaket
-Changes to the core system of the EEG have been suggested through a draft finalised on the 29 July 2026 through the "Netzanschlusspaket" in 2026. The changes have currently been finalised by the #Bundeskabinett however it still has to be reviewed and consulted on by the #Bundestag and the #Bundesrat. Therefore these changes are not yet legally binding.
+Changes to the core system of the EEG have been suggested through a draft finalised on the 29 July 2026 through the "Netzanschlusspaket" in 2026. The changes have currently been finalised by the #Bundeskabinett and are currently being reviewed and consulted on by the #Bundestag and need to be reviewed by the #Bundesrat. Therefore these changes are not yet legally binding.
 
 The background for these changes is very similar to that of the #Solarspitzengesetz . Since the EEG was introduced as an incentive mechanism to promote the build of renewable energies it has been very successful in the last two decades. Furthermore, renewable energies now form a substantial part of the electricity mix, and as electricity sources they have become cheaper and there are often situations where more renewable energy is fed into the grid than the grid can handle, which leads to grid congestion issues and frequent negative grid prices.
 
@@ -85,4 +85,5 @@ All plants must eventually participate in direct marketing. The transitional pay
 There is also a permanent cap on direct feed-in for new rooftop PV plants under 100 kW: they may feed a maximum of 50% of their installed capacity into the grid at the connection point. This cap applies only to grid feed-in. Self-consumption and charging a battery storage system are unaffected.
 
 For plants >= 100 kW the unidirectional system will become a bidirectional system. Until now in the #Direktvermarktung when the Marktwert is higher than the Anzulegenderwert,  the operator can keep all the gains. Under the changes in the EEG 2027 this system will become symmetrical where when the Marktwert is higher than the Anzulegenderwert, the plant operator has to pay back the grid operator. The repayment is oriented towards the spot price. The operator however always earns a minimum of 0.5 ct/kWh. To do this operators must register the plant within 6 months of commissioning. If the Marktwert is lower than the Anzulegender Wert, the plant operator still receives the difference from the grid operator.
+
 
