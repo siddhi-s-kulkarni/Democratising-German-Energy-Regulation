@@ -83,6 +83,15 @@ export const VaultFrame: PageFrame = {
   function openIt() {
     var icon = document.querySelector(".global-graph-icon")
     if (icon) icon.click()
+    // graph-custom only runs its own "reveal" animation (which sets
+    // opacity to 1) the first time the graph is freshly rendered. On a
+    // repeat visit to this page via SPA navigation, the existing graph
+    // container is just toggled visible again rather than re-rendered —
+    // so if it's still sitting at its initial opacity:0 from a previous
+    // visit, nothing re-triggers the reveal. Force it visible directly
+    // here as a guaranteed fallback, independent of that internal state.
+    var container = document.querySelector(".global-graph-container")
+    if (container) container.style.opacity = "1"
   }
   function attempt(attemptsLeft) {
     // Bail immediately if we've navigated away from the vault page — this
