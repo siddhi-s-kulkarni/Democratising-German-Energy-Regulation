@@ -82,6 +82,7 @@ export const VaultFrame: PageFrame = {
   }
   function openIt() {
     var icon = document.querySelector(".global-graph-icon")
+    console.log("[Vault] openIt called. icon found:", !!icon)
     if (icon) icon.click()
     // graph-custom only runs its own "reveal" animation (which sets
     // opacity to 1) the first time the graph is freshly rendered. On a
@@ -97,8 +98,14 @@ export const VaultFrame: PageFrame = {
     // Bail immediately if we've navigated away from the vault page — this
     // check runs on every attempt, not just once, since the SPA can
     // navigate mid-retry-sequence too.
-    if (!document.querySelector(".vault-graph-stage")) return
-    if (isOpen()) return
+    if (!document.querySelector(".vault-graph-stage")) {
+      console.log("[Vault] attempt() bailing: no .vault-graph-stage found")
+      return
+    }
+    if (isOpen()) {
+      console.log("[Vault] attempt() bailing: isOpen() already true")
+      return
+    }
     openIt()
     if (attemptsLeft > 0) {
       setTimeout(function () { attempt(attemptsLeft - 1) }, 150)
@@ -136,6 +143,7 @@ export const VaultFrame: PageFrame = {
       topLeft.appendChild(darkmodeBtn)
     }
 
+    console.log("[Vault] setup() reached attempt(30)")
     attempt(30)
 
     // The graph is no longer a dismissible modal on this page — but
