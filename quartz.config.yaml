@@ -13,12 +13,12 @@ configuration:
     - templates
     - .obsidian
   theme:
-    fontOrigin: googleFonts
+    fontOrigin: local
     cdnCaching: true
     typography:
-      header: Fraunces
-      body: Quicksand
-      code: IBM Plex Mono
+      header: Georgia
+      body: Verdana
+      code: "Courier New"
     colors:
       lightMode:
         light: "#f6f8fa"
@@ -114,7 +114,7 @@ plugins:
   - source: github:quartz-community/favicon
     enabled: true
   - source: github:quartz-community/og-image
-    enabled: true
+    enabled: false
   - source: github:quartz-community/cname
     enabled: true
   - source: github:quartz-community/canvas-page
