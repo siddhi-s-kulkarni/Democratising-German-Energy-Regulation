@@ -223,6 +223,7 @@ plugins:
         LinkedIn: https://www.linkedin.com/in/siddhikulkarni/
         GitHub: https://github.com/siddhi-s-kulkarni
         License: https://creativecommons.org/licenses/by-nc-nd/4.0/
+        Disclaimer: https://siddhi-s-kulkarni.github.io/Democratising-German-Energy-Regulation/#what-this-is
   - source: github:quartz-community/recent-notes
     enabled: false
   - source: github:quartz-community/spacer
